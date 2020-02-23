@@ -1,3 +1,4 @@
+
 ;;; init.el --- Spacemacs Initialization File
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
@@ -11,6 +12,7 @@
 
 ;; Without this comment emacs25 adds (package-initialize) here
 ;; (package-initialize)
+
 
 (setq gc-cons-threshold 100000000)
 ;; Increase gc-cons-threshold, depending on your system you may set it back to a
@@ -45,22 +47,37 @@
   (setq kill-ring (cdr kill-ring)))
 
 (when (>= emacs-major-version 24)
-  (require 'package)
+  (require
+   'package)
   (add-to-list
    'package-archives
    ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
    '("melpa" . "http://melpa.milkbox.net/packages/")
    t))
 
+
 (setq mac-command-modifier 'super)
+(setq mac-function-modifier 'hyper)
 (global-set-key (kbd "s-S-<up>") 'move-text-line-up)
 (global-set-key (kbd "s-S-<down>") 'move-text-line-down)
 (global-set-key (kbd "s-d") 'copy-line)
-(global-set-key (kbd "s-w") 'er/expand-region)
+(global-set-key (kbd "C-w") 'er/expand-region)
 (global-set-key (kbd "s-y") 'kill-whole-line)
 (global-set-key (kbd "s-/") 'spacemacs/comment-or-uncomment-lines)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s-S-y") 'redo)
 (global-set-key (kbd "s-t") 'treemacs)
-(global-set-key (kbd "s-~") 'other-window)
+(global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "s-<right>") 'move-end-of-line)
+(global-set-key (kbd "s-M-<right>") 'better-jumper-jump-forward)
+(global-set-key (kbd "s-M-<left>") 'better-jumper-jump-backward)
+(global-set-key (kbd "C-`") 'next-buffer)
+(global-set-key (kbd "C-n") 'spacemacs/new-empty-buffer)
+(global-set-key (kbd "s-w") 'delete-frame)
+(global-set-key (kbd "s-e") 'recentf-open-files)
 (set-face-attribute 'default nil  :height 150)
+(set-face-attribute 'default nil  :height 150)
+
+(better-jumper-mode +1)
+
+
